@@ -312,9 +312,9 @@ var bigInt = (function (undefined) {
 
         var ac = multiplyKaratsuba(a, c),
             bd = multiplyKaratsuba(b, d),
-            abcd = multiplyKaratsuba(addAny(a, b), addAny(c, d));
+            abcd = multiplyKaratsuba(subtract(a,b), subtract(c,d));
 
-        var product = addAny(addAny(ac, shiftLeft(subtract(subtract(abcd, ac), bd), n)), shiftLeft(bd, 2 * n));
+        var product = addAny(addAny(ac, shiftLeft(subtract(abcd, addAny(ac, bd)), n)), shiftLeft(bd, 2 * n));
         trim(product);
         return product;
     }
